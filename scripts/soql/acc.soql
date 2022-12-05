@@ -22,7 +22,7 @@ SELECT ID, name from account order by name desc limit 5
 // en son acilan 3 record u getir - order by
 select ID, name, createdDate from account order by createdDate desc limit 3
 
-//not equal to !=
+// not equal to !=
 SELECT ID, name, phone from account where phone != null
 SELECT ID, name, phone from account where phone != ''
 
