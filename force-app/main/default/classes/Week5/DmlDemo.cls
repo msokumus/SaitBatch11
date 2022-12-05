@@ -24,7 +24,7 @@ public class DmlDemo {
     account acc = new account();
     acc.Name = 'softinnnovas'; 
     insert acc;
-    
+
     //change field values
     acc.Name = 'Salesforce Inc.';
     //update DML
