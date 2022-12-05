@@ -1,0 +1,53 @@
+select id, name from account
+
+// SATIRI sec, command palatte i ac. execute soql query i sec, REST API SEC.
+
+select id, name,project_name__c from salesforce_project__c
+
+select id, name, birthdate from contact
+select id, name, mailingCity, birthdate from contact where mailingcity = 'paris'
+select id, name, mailingCity, birthdate from contact where name like '%c%'
+
+// A%
+// %A
+// %A%
+
+// isimleri azalarak sirala
+SELECT ID, name from account order by name desc
+
+
+// 5 sadece 5 record
+SELECT ID, name from account order by name desc limit 5
+
+// en son acilan 3 record u getir - order by
+select ID, name, createdDate from account order by createdDate desc limit 3
+
+//not equal to !=
+SELECT ID, name, phone from account where phone != null
+SELECT ID, name, phone from account where phone != ''
+
+
+SELECT Id, Name, Description__c, Project_Name__c, Status__c FROM Salesforce_Project__c where status__c != 'new'
+
+// parantez olmasi lazim
+select Name, Id, phone,accountnumber, active__c, shippingcity from account where phone != null and accountnumber != null 
+
+SELECT Name, Id, phone,  accountnumber,   active__c,  shippingcity, website from account where (phone != null or website != null) and accountnumber != null 
+
+
+
+select id, name, subject__c, status__c, priority__c from salesforce_ticket__c where status__c != '' and priority__c != 'high'
+
+
+// uc kosulu parantez icinde yazmak icin in kullandik.
+select id, name, subject__c, status__c, priority__c from salesforce_ticket__c where status__c != '' and priority__c in ('high', 'low','')
+
+
+
+// relationship queries in APEX
+
+// parent - child 
+select id, name, account.name from contact
+
+// c yerine __r yaptik relationship anlasilsin diye
+select id, name, Subject__c, Priority__c, status__c, Salesforce_Project__r.name, Salesforce_Project__r.project_name__c from salesforce_ticket__c
