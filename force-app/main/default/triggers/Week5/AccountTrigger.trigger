@@ -200,7 +200,7 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         }
     }
 }
-*/
+
 
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
     
@@ -210,10 +210,13 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         map<id, account> accTriggerOldMap = trigger.oldMap; //map of old records, id is key
         map<id, account> accTriggerNewMap = trigger.newMap; //map of new records, id is key
         set<id> accountIds = accTriggerNewMap.keySet(); //all the IDS.
+        system.debug('accountids -> ' + accountIds);
+        system.debug('accountIdsOld -> ' + accountIdsOld);
+
         integer countWebsite = 0; // for un disina yazdik. toplam degisiklik sayisi icin.
 
         for (Id eachId : accountIds) {
-            //get NEW account value from NewMap - id is same in newmap and oldmap
+            //get NEW account value from NewMap - id is same in newmap and oldmap // old veya new kullanilabilir. Cunku ID ayni
             account newAcc = accTriggerNewMap.get(eachId);
             string newWebsite = newAcc.Website;
             system.debug('** newWebsite -> ' + newWebsite);
@@ -231,3 +234,77 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         system.debug('website updated for # of accounts => ' + countwebsite);
     }
 }
+
+
+trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
+    
+    if (Trigger.isBefore) {
+        for (account eachAcc : Trigger.new) {
+            if (Trigger.isInsert && eachAcc.Active__c == 'Yes') {
+                //just update field
+                eachAcc.Description = 'Account is now active. Enjoy buddy!!';
+            }
+            //if account is updated.
+                //check if active field is changed from not yes to yes
+                //then update description
+            if (Trigger.isUpdate) {
+                //get old account using OldMAP
+                Account oldAccount = Trigger.OldMap.get(eachAcc.Id);
+                //get new account using newMap
+                Account newAccount = Trigger.NewMap.get(eachAcc.Id);
+                //oldAccount.Active__c != newAccount.Active__c
+                if (eachAcc.Active__c == 'Yes' &&
+                   oldAccount.Active__c != newAccount.Active__c ) {
+                    eachAcc.Description = 'Account is NOW ACTIVE. You must Enjoy!';
+                }
+            }
+        }
+    }
+}
+
+// yukaridaki kodu asagidaki gibi birlestirebiliriz. tek yerde aciklama guncellenmis olur
+trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
+    
+    if (Trigger.isBefore) {
+        for (account eachAcc : Trigger.new) {
+            boolean updateDesc = false;
+            if (Trigger.isInsert && eachAcc.Active__c == 'Yes') {
+                //just update field
+                updateDesc = true;
+            }
+            //if account is updated.
+                //check if active field is changed from not yes to yes
+                //then update description
+            if (Trigger.isUpdate) {
+                //get old account using OldMAP
+                Account oldAccount = Trigger.OldMap.get(eachAcc.Id);
+                //get new account using newMap
+                Account newAccount = Trigger.NewMap.get(eachAcc.Id); // 286 varsa bu satira gerek yok.
+                //oldAccount.Active__c != newAccount.Active__c
+                if (eachAcc.Active__c == 'Yes' &&
+                   oldAccount.Active__c != newAccount.Active__c ) {
+                    // oldAccount.Active__c != eachAcc.Active__c // bu da olur. 3. yol. bu varsa 282 ye gerek yok
+                   // oldAccount.Active__c != 'Yes' // bu da olur.
+                    updateDesc = true;
+                }
+            }
+            if (updateDesc) {
+                eachAcc.Description = 'Account is now active. Enjoy buddy!!';
+            }
+        }
+    }
+}
+*/
+// yukaridaki kodu AccountTriggerHandler.cls icine tasidik....
+
+trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
+    
+    if (Trigger.isBefore) {
+        AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }
+    if (Trigger.isAfter && Trigger.isUpdate) {
+        //HERE we call handler method to update all contacts VIP field
+        AccountTriggerHandler.updateVIPforContacts(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }
+}
+
