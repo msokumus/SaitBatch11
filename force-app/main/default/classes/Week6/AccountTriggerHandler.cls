@@ -36,7 +36,7 @@ public class AccountTriggerHandler {
                 accIds.add(eachAcc.Id);
             }
         }
-        //get contacts for all those accounts
+        //get contacts for all those accounts // for loop icinde DML ve SOQL yapilamayacagi icin disinda yaptik.
                 //get contacts for all those 3 account. 10 contacts.
         List<contact> allContacts = [select id, vip__c, accountId from contact where account.id in :accIds];
 
