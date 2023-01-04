@@ -16,8 +16,12 @@ public class ContactTriggerHandler {
                  for (contact eachContact : conTriggerNew) {
                      contact oldContact = conTriggerOldMap.get(eachContact.id);
                      if (eachContact.LeadSource != oldContact.LeadSource) {
-                         eachContact.LeadSource.addError('Cannot update lead source. Don`t do it Sait!'); // field altinda hata mesaji verir
+                        string customError = system.label.ContactValidation2; // org da actigimiz custom label ile dinamik hata mesajina cevirdik. eskisi altta. 
+                        eachContact.LeadSource.addError(customError);
+                        // eachContact.LeadSource.addError('Cannot update lead source. Don`t do it Sait!'); // field altinda hata mesaji verir
                      }
                  }
      }
  }
+
+ // CUSTOM LABEL uygulamasi

@@ -1,8 +1,8 @@
 @isTest
 public class SoqlDemo2Test {
 
-   @TestSetup
-   static void makeData(){
+    @TestSetup
+    static void makeData(){
          //1. Prepare data
          Account acc1 = new account();
          acc1.name = 'SI Test';
@@ -33,7 +33,7 @@ public class SoqlDemo2Test {
              listcontact.add(cnt);
          }
          insert listcontact;
-   }
+    }
 
     @isTest
     private static void testMethod1() {
