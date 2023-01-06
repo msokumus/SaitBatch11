@@ -22,7 +22,11 @@ Without Sharing     --> Class C     [without sharing rules.] sharing rule u dikk
 
 omitted sharing     --> class D     [with sharing when called from Class A]
 (bos, hicbir sey yazmazsak)         [trigger, vf page, lwc --> without sharing.] // FARKLI!!! Trigger vs ile cagrilirsa 'withOUT sharing' olur. 
-                                    [without sharing when called from Class C]
+ no sharing is mentioned            [without sharing when called from Class C]
                                     (bos birakilirsa Inherited gibi davranir. tek farki triggerdan cagrilirsa olur.)
+
+
+
+https://salesforce.stackexchange.com/questions/264509/inherited-sharing-vs-no-sharing-declaration
 
 /*

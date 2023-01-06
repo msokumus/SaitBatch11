@@ -3,6 +3,8 @@ system.debug('all domains -> ' + allDomains);
 
 
 
+/* 
+
 * Custom Metadata Type // hem kendisi hem de recordlar org tan org a tranfer edilebilir. Farki bu. recordlari insert veya update ederken apex kolay kullanilamaz, dezavantaji bu.
 
 * Custon seetings // bunun ile DML yapilabilir Custom Object de oldugu gibi.. Avantaji bu.
@@ -20,3 +22,8 @@ Olusturdugumuz metadatalari VS code icine bulut logosundan cagirabiliyoruz. refr
 (Eger class ve meta larindan bir hata yoksa cagrilabiliyor. Hatayi duzelt oyle cagir.) 
 
 Bulut acik degilse sag tikla Org Browser i ac. Bulut = Org Browser
+
+https://trailhead.salesforce.com/content/learn/modules/custom_metadata_types_dec/cmt_overview 
+
+
+*/
