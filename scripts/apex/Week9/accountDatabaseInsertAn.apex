@@ -19,5 +19,5 @@ for(database.SaveResult r: results){
         system.debug('errored out. errors are ' + r.getErrors());
     }
 }
-
+// Exeption Handling
 // Database.insert ornekleri

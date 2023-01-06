@@ -13,6 +13,8 @@ system.debug('Apex is SIMPLE');
 
 // hatayi yakala ve yoluna devam et...
 
+// Exeption Handling
 // TRY CATCH 
+
 
 

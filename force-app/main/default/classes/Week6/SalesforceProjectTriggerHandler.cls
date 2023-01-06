@@ -2,12 +2,15 @@ public class SalesforceProjectTriggerHandler {
     public static void createDefaultTicket(List<salesforce_project__c> spTriggerNew) {
         try {  // try catch satiri ekledik.
             List<Salesforce_Ticket__c>  listST = new List<Salesforce_Ticket__c>();
+            DefaultTicketInfo__c defaultValues = DefaultTicketInfo__c.getOrgDefaults(); //Custom settings satiri. get the default ORG value using 'getOrgDefaults' method of custom settings.s
 
             for (salesforce_project__c eachSP : spTriggerNew) {
                 Salesforce_Ticket__c newST = new Salesforce_Ticket__c();
-                newST.Subject__c = 'Default ticket';
+                // newST.Subject__c = 'Default ticket'; // Custom settings icin bunu pasif yaptik. //make it a little dynamic, so admin or dev can change it.
+                newST.Subject__c = defaultValues.Subject__c; // Custom settings satiri //set the Ticket subject = custom setting value's subject.              
                 newST.Salesforce_Project__c = eachSP.Id;
-                // newST.Priority__c = 'Medium';  // koda bu satiri ekleyip duzelttik. yarin admin baska bir degiliklik yaparsa?? asagidaki elek yakalar.
+                newST.Priority__c = 'Medium';  // koda bu satiri ekleyip duzelttik. (test icin satiri pasif yapmak lazim) yarin admin baska bir degiliklik yaparsa?? asagidaki elek yakalar.
+                newST.Description__c = defaultValues.description__c; // Custom settings satiri
                 listST.add(newST);
             }
             if (!listST.isEmpty()) {        
@@ -29,6 +32,8 @@ public class SalesforceProjectTriggerHandler {
         }
     }    
     // TRY CATCH uygulamasi
+    // CUSTOM SETTINGS uygulamasi (hierarchy ile org level tek bir record olusturulur.)
+
     public static void completeSPvalidation(List<salesforce_project__c> spTriggerNew, List<salesforce_project__c> spTriggerOld, 
     Map<id,salesforce_project__c> spTriggerNewMap, Map<id,salesforce_project__c> spTriggerOldMap) {
         

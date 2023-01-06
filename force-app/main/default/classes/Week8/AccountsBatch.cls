@@ -38,3 +38,6 @@ public class AccountsBatch implements Database.Batchable<sObject>, Database.stat
         system.debug('FINISH number of records proccessed count: ' + countRecords);
    }
 }
+
+// bunu execute etmek icin anon.apex olusturduk.
+// Her bir batch de tek bir SOQL yapilabiliyor. Farkli islem ve SOQL icin yeni bir batch olusturulmali. 
