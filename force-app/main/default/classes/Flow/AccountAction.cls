@@ -28,7 +28,7 @@ public with sharing class AccountAction {
         Account parentAcc = new Account();
         parentAcc.Id = parentAccountId;
         parentAcc.AnnualRevenue = totalAmount;
-        update parentAcc;;
+        update parentAcc;
     }
 }
 
@@ -38,7 +38,5 @@ public with sharing class AccountAction {
 ●Only one method in a class can have the invocable method annotation
 ●Triggers can’t reference invocable methods
 ●Invocable method doesn’t accept more than one argument as a method parameter !!! Onemli
-●Other annotations cant be used with invocable method annotation  
-deneme
-
+●Other annotations cant be used with invocable method annotation
 */
