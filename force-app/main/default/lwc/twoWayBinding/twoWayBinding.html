@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Two Way Data Binding">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type="text"
+                label="Enter your name"
+                value = {fullname}
+                onchange = {changeHandler}>
+            </lightning-input>
+            <lightning-combobox
+                label="Select Your Role"
+                options= {roleOptions}
+                value = {role}
+                onchange={changeHandler}>
+            </lightning-combobox>
+        </div>
+        <div class="slds-var-m-around_medium">
+            My name is {fullname}<br/>
+            My role is {role}
+        </div>
+    </lightning-card>
+</template>
+

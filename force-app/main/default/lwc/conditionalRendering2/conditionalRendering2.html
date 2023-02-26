@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Conditional Rendering2">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type = "text"
+                label = "Enter the Country"
+                onchange={changeHandler}>
+            </lightning-input>
+            <template lwc:if = {showContent}>
+                Hey, I live in Canada!
+            </template>
+            <template lwc:elseif = {showContent2}>
+                Hey, I live in Turkiye!
+            </template>
+            <template lwc:else>
+                Hey!
+            </template>
+        </div>
+    </lightning-card>
+</template>
+
+
+<!-- 
+    <template>
+    <lightning-card title="Conditional Rendering2">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type = "text"
+                label = "Enter the Country"
+                onchange={changeHandler}>
+            </lightning-input>
+            <template lwc:if = {showContent}>
+                Hey, I live in United States!
+            </template>
+            <!-- <template lwc:elseif = {showContentTr}>
+                Hey, I live in Turkey!
+            </template> --> <!-- 
+        </div>
+    </lightning-card>
+</template>
+
+-->  

@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Conditional Rendering 3">
+        <div class = "slds-var-m-around_medium">
+            <lightning-button
+                variant = "brand"
+                label = {labelButton}
+                onclick = {clickHandler}>
+            </lightning-button>
+            <template lwc:if = {showContent}>
+                 I'am the so called content.
+            </template>
+        </div>
+    </lightning-card>
+</template>
+
+<!-- yukaridaki label 'Click Me' idi. Onu dinamik yaptik -->

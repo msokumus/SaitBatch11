@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="For Each TR">
+        <div class="slds-m-around_medium">
+            <strong>Employees</strong>
+        </div>
+        <ul class="slds-m-around_medium slds-list_dotted">
+            <template for:each={contacts} for:item="con">
+                <li key={con.id}>
+                    {con.Id}. {con.Name}, {con.Title}
+                </li>
+            </template>            
+        </ul>
+        <hr>
+        <div class="slds-m-around_medium">
+            <strong>Book List</strong>
+        </div>
+        <ol class="slds-m-around_medium">
+            <template for:each={books} for:item="book">
+                <li key={book}>
+                    <strong>K. </strong>
+                    {book}
+                </li>
+            </template>
+        </ol>
+    </lightning-card>     
+</template>
+
+<!-- 
+    hr cizgi cizmek icin
+ -->

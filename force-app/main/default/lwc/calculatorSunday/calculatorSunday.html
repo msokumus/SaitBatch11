@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Calculator Sunday">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                type="text"
+                label="Enter the first number"
+                step=".01"
+                placeholder="Only number"
+                onchange = {changeHandler}>
+            </lightning-input>
+            <lightning-input
+                type="number"
+                label="Enter the second number"
+                step=".01"
+                placeholder="Only number"
+                value=""
+                onchange={changeHandler}>
+            </lightning-input>
+        </div>
+        <div class="slds-var-m-around_medium">
+            Total is : <strong>{total}</strong><br/>            
+        </div>
+    </lightning-card>
+</template>
+
+
+
+<!-- 
+    type kismina number yazarsak sadece numara girilebilir.
+    'value' ekran acildiginda dolu bir bilgi ile gelmesi icin
+    'placeholder' silik gri yazi. bu varken value olmamali
+ -->

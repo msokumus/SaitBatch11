@@ -1,0 +1,24 @@
+<template>
+    <lightning-card 
+    title="Lightning Record From - Case"
+    icon-name ="standard:opportunity">
+        <div 
+        class = "slds-var-m-around_medium">
+           <lightning-record-form               
+                object-api-name= {objectName}
+                fields= {caseFields}
+                record-id = {recordId}
+                columns="2">
+                <!-- layout-type="Full" -->
+            </lightning-record-form>
+        </div>
+    </lightning-card>
+</template>
+
+ <!-- 
+    layout-type="Full">    Bununla tum fieldlari gosterebiliriz. field secmeye gerek yok.   
+    
+    icon secmek icin bu adresten isim kopyaliyoruz.
+    https://www.lightningdesignsystem.com/icons/
+
+ -->

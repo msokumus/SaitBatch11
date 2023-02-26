@@ -25,3 +25,19 @@ inputs.put('recordId', '001Do000003DmbLIAS');
 // Flow.Interview is a predefined Apex Class which hold relationship between Apex & Flows
 Flow.Interview autoLaunchFlow = Flow.Interview.createInterview('Auto_Launch_Flow_Demo', inputs);
 autoLaunchFlow.start();
+
+
+
+
+
+
+
+
+// Integration CLS
+RestApiOutboundCallout.getAnimals();
+RestApiOutboundCallout.getUser();
+RestApiOutboundCallout.getListOfUsers();
+RestApiOutboundCallout.getAnimals();
+RestApiOutboundCallout.postAnimal();
+RestApiOutboundCallout.postUser();
+RestApiOutboundCallout.getAnimalWithAuthenticationNamedCredential();
