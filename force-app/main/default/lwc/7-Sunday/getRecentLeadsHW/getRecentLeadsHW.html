@@ -1,0 +1,29 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card 
+            title="Top 5 Recent Leads HW" 
+            icon-name="standard:lead">
+        <div class="slds-var-m-around_medium">
+            <!-- sldsValidatorIgnoreNextLine -->
+            <lightning-button
+            label="Recent Leads"
+            variant="brand"
+            onclick={handleClick}>
+            </lightning-button>
+
+            <div class="slds-var-m-top_small">
+                <template lwc:if={leads}>
+                    <lightning-datatable
+                    key-field="Id"
+                    data={leads}                   
+                    columns={columns}>
+                    </lightning-datatable>
+                </template>
+
+                <template lwc:if={error}>
+                    {error}
+                </template>                
+            </div>       
+        </div>
+    </lightning-card>
+</template>

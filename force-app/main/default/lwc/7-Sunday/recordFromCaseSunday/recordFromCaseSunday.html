@@ -1,0 +1,62 @@
+<template>
+    <lightning-card 
+        title="CASE FORM"
+        icon-name="standard:case">
+        <div class = "slds-var-m-around_medium">            
+            <lightning-record-edit-form
+                object-api-name={objectName}
+                record-id={recordId}
+                onsuccess={successHandler}
+                onerror={errorHandler}>
+
+                <lightning-messages></lightning-messages>
+                <!-- bu kod sistemde error olmasi durumunda, error mesaji veriyormus -->
+                
+                <div class = "slds-grid slds-gutters">
+
+                    <div class="slds-col">
+                        <lightning-input-field
+                            field-name={fields.sub}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.pri}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.sta}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.desc}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.ori}>
+                        </lightning-input-field>
+                    </div>
+
+                    <div class="slds-col">                       
+                        <lightning-output-field
+                            field-name={fields.aid}>
+                        </lightning-output-field>
+                        <lightning-output-field
+                            field-name={fields.cid}>
+                        </lightning-output-field>      
+                    </div>                    
+                </div>
+
+                <div class = "slds-align_absolute-center">
+                    <lightning-button
+                        label="Cancel"
+                        variant="neutral"
+                        type="reset"
+                        class = "slds-var-m-right_small">
+                    </lightning-button>  
+                    <lightning-button
+                        label="Save"
+                        variant="brand"
+                        type="submit">
+                    </lightning-button>               
+                </div>
+
+           </lightning-record-edit-form>
+        </div>    
+    </lightning-card>      
+</template>

@@ -1,0 +1,63 @@
+<template>
+    <lightning-card 
+        title="Record Edit Form - Opportunity"
+        icon-name ="standard:opportunity">
+        <div class = "slds-var-m-around_medium">            
+            <lightning-record-edit-form
+                object-api-name={objectName}
+                record-id={recordId}
+                onsuccess={successHandler}
+                onerror={errorHandler}>
+
+                <div class = "slds-grid slds-gutters">
+
+                    <div class="slds-col">
+                        <lightning-input-field
+                            field-name={fields.name}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.accid}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.amo}>
+                        </lightning-input-field>
+                    </div>
+
+                    <div class="slds-col">
+                        <lightning-input-field
+                            field-name={fields.cd}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.sn}>
+                        </lightning-input-field>
+                        <lightning-input-field
+                            field-name={fields.type}>
+                        </lightning-input-field>    
+                    </div>
+                    
+                </div>  
+                <div class = "slds-align_absolute-center">
+                    <lightning-button
+                        label="Cancel"
+                        variant="neutral"
+                        type="reset"
+                        class = "slds-var-m-right_small">
+                    </lightning-button>  
+                    <lightning-button
+                        label="Save"
+                        variant="brand"
+                        type="submit">
+                    </lightning-button>                   
+
+                </div>  
+
+            
+            </lightning-record-edit-form>
+        </div>
+
+    
+    </lightning-card>
+       
+    
+    
+</template>
